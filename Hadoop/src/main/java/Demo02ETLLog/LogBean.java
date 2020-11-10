@@ -43,6 +43,7 @@ public class LogBean {
         sb.append("\001").append(this.http_referer);
         sb.append("\001").append(this.http_user_agent);
 
+
         return sb.toString();
     }
 }
