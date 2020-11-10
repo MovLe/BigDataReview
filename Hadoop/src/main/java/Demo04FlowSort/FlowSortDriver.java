@@ -1,4 +1,4 @@
-package Demo03FlowCount;
+package Demo04FlowSort;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -10,35 +10,34 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.IOException;
 
 /**
- * @ClassName FlowCountDriver
- * @MethodDesc: 统计手机流量
+ * @ClassName FlowSortDriver
+ * @MethodDesc: 用户流量排序
  * @Author Movle
- * @Date 11/10/20 2:14 下午
+ * @Date 11/10/20 3:03 下午
  * @Version 1.0
  * @Email movle_xjk@foxmail.com
  **/
 
 
-public class FlowCountDriver {
+public class FlowSortDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
 
-        job.setJarByClass(FlowCountDriver.class);
-        job.setMapperClass(FlowCountMapper.class);
-        job.setReducerClass(FlowCountReducer.class);
+        job.setJarByClass(FlowSortDriver.class);
+        job.setMapperClass(FlowSortMapper.class);
+        job.setReducerClass(FlowSortReducer.class);
 
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(FlowBean.class);
+        job.setMapOutputKeyClass(FlowBean.class);
+        job.setMapOutputValueClass(Text.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(FlowBean.class);
 
-        //job.setNumReduceTasks(3);
-
         FileInputFormat.setInputPaths(job,new Path(args[0]));
-        FileOutputFormat.setOutputPath(job,new Path((args[1])));
+        FileOutputFormat.setOutputPath(job,new Path(args[1]));
 
         job.waitForCompletion(true);
+
     }
 }
