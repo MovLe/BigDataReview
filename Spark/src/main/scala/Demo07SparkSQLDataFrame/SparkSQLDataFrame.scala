@@ -34,6 +34,7 @@ object SparkSQLDataFrame {
     val df = spark.sql("select * from t_person order by age desc")
 
     df.show()
+
     spark.stop()
   }
 
