@@ -31,14 +31,14 @@ object MyJDBCRdd {
       val ename = r.getString(2)
       val sal = r.getInt(4)
 
-      (0,0)
+      (ename,sal)
     })
 
     val result = mysqlRDD.collect()
 
-    mysqlRDD.foreach(println)
+    //mysqlRDD.foreach(println)
     //result.foreach(println)
-    //println(result.toBuffer)
+    println(result.toBuffer)
 
     sc.stop()
   }
