@@ -1,3 +1,6 @@
 /Hadoop/target/
 .gitignore
 Hadoop/src/test/
+/Spark/target/
+Spark/src/main/resources/
+Spark/src/test/
